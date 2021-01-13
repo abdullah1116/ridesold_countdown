@@ -1,7 +1,4 @@
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js oldie ie8" lang="en"> <![endif]-->
-<!--[if IE 9]><html class="no-js oldie ie9" lang="en"> <![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!-->
 <html class="no-js" lang="en">
   <!--<![endif]-->
 
@@ -10,8 +7,8 @@
    ================================================== -->
     <meta charset="utf-8" />
     <title>RideSold</title>
-    <meta name="description" content="" />
-    <meta name="author" content="" />
+    <meta name="description" content="Bid, Sell, and Spectate" />
+    <meta name="author" content="RideSold.com" />
 
     <!-- Mobile Specific Metas
    ================================================== -->
@@ -22,28 +19,552 @@
 
     <!-- CSS
    ================================================== -->
-    <link rel="stylesheet" href="css/base.css" />
-    <link rel="stylesheet" href="css/vendor.css" />
-    <link rel="stylesheet" href="css/main.css" />
-
+    <!-- <link rel="stylesheet" href="main.css" /> -->
+    <style>
+      @import url(https://fonts.googleapis.com/css2?family=Montserrat&display=swap);
+      body {
+        color: #575859;
+        margin: 0;
+        line-height: 1;
+        background: #161415 url(https://i.imgur.com/LvHUm4w.jpg) no-repeat 50%
+          fixed;
+        background-size: cover !important;
+      }
+      * {
+        box-sizing: border-box;
+        font-family: Montserrat, sans-serif;
+      }
+      h1 {
+        font-weight: 700;
+        font-size: 30px;
+        line-height: 36px;
+        margin: 0 0 15px;
+        letter-spacing: -1px;
+      }
+      .row {
+        text-align: center;
+        width: 94%;
+        max-width: 1024px;
+        margin: 0 auto;
+      }
+      .row .row {
+        width: auto;
+        max-width: none;
+        margin-left: -18px;
+        margin-right: -18px;
+      }
+      @media screen and (max-width: 768px) {
+        .row {
+          width: auto;
+          padding-left: 30px;
+          padding-right: 30px;
+        }
+        .row .row {
+          padding-left: 0;
+          padding-right: 0;
+          margin-left: -15px;
+          margin-right: -15px;
+        }
+        .columns {
+          padding: 0 15px;
+        }
+      }
+      @media screen and (max-width: 600px) {
+        .row {
+          padding-left: 25px;
+          padding-right: 25px;
+        }
+        .row .row {
+          margin-left: -10px;
+          margin-right: -10px;
+        }
+        .columns {
+          padding: 0 10px;
+        }
+      }
+      @media screen and (max-width: 400px) {
+        .row {
+          padding-left: 30px;
+          padding-right: 30px;
+        }
+        .columns,
+        .row .row {
+          margin-left: 0;
+          margin-right: 0;
+        }
+        .row .row {
+          padding-left: 0;
+          padding-right: 0;
+        }
+        .columns {
+          width: auto !important;
+          float: none !important;
+          clear: both;
+          padding: 0;
+        }
+        [class*='column'] + [class*='column']:last-child {
+          float: none;
+        }
+      }
+      .no-js #preloader {
+        display: none;
+      }
+      .placeholder {
+        color: #000 !important;
+      }
+      #preloader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: #000;
+        z-index: 2;
+        height: 100%;
+      }
+      #loader {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 60px;
+        height: 60px;
+        margin: -30px 0 0 -30px;
+        padding: 0;
+      }
+      #loader:before {
+        content: '';
+        border-top: 11px solid hsla(0, 0%, 100%, 0.2);
+        border-right: 11px solid hsla(0, 0%, 100%, 0.2);
+        border-bottom: 11px solid hsla(0, 0%, 100%, 0.2);
+        border-left: 11px solid #eb9400;
+        animation: a 1.1s infinite linear;
+        display: block;
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+      }
+      input[type='email'],
+      input[type='text'] {
+        display: block;
+        padding: 12px 15px;
+        margin: 0 0 12px;
+        outline: 0;
+        font-family: Montserrat, sans-serif;
+        font-size: 14px;
+        line-height: 24px;
+        border-radius: 3px;
+        max-width: 100%;
+        background: 0 0;
+        border: 3px solid #a9aaab;
+      }
+      input[type='email']:focus,
+      input[type='text']:focus {
+        background: #fff;
+      }
+      #content-wrap {
+        min-height: 100%;
+        padding-top: 6%;
+      }
+      @media only screen and (max-width: 900px) {
+        #content-wrap {
+          padding-top: 9%;
+        }
+      }
+      @media only screen and (max-width: 768px) {
+        #content-wrap {
+          padding-top: 13%;
+        }
+      }
+      @media only screen and (max-width: 600px) {
+        #content-wrap {
+          min-height: auto;
+          padding-top: 60px;
+        }
+      }
+      @media only screen and (max-width: 400px) {
+        #content-wrap {
+          padding-top: 54px;
+        }
+      }
+      main.row {
+        max-width: 700px;
+      }
+      main:after {
+        content: '';
+        display: block;
+        height: 150px;
+      }
+      #mc-signup input,
+      #mc-signup label,
+      main h1 {
+        font-family: Montserrat, sans-serif;
+      }
+      main h1 {
+        font-size: 38px;
+        color: #eb9400;
+        margin-bottom: 12px;
+        padding: 0;
+      }
+      main .site-header .logo {
+        display: inline-block;
+        vertical-align: middle;
+        margin: 0 0 36px;
+        padding: 0;
+      }
+      main .site-header .logo a {
+        display: block;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        outline: 0;
+        font: 0/0 a;
+        text-shadow: none;
+        color: transparent;
+        width: 220px;
+        height: 100px;
+        background: url(https://zxasqw.ridesold.com/assets/images/logos/logo-ride-orange.svg)
+          no-repeat;
+        background-size: contain;
+      }
+      @media only screen and (max-width: 900px) {
+        main.row {
+          width: 85%;
+        }
+        main h1 {
+          font: 35px/1.2em Montserrat, sans-serif;
+        }
+        main .site-header .logo {
+          margin: 0 0 30px;
+        }
+        main .site-header .logo a {
+          width: 104px;
+          height: 72px;
+        }
+      }
+      @media only screen and (max-width: 768px) {
+        main.row {
+          width: 92%;
+        }
+        main h1 {
+          font: 32px/1.2em Montserrat, sans-serif;
+        }
+        main .site-header .logo {
+          margin: 0 0 24px;
+        }
+      }
+      @media only screen and (max-width: 500px) {
+        main.row {
+          width: 96%;
+        }
+        main h1 {
+          font: 30px/1.2em Montserrat, sans-serif;
+        }
+        main:after {
+          height: 78px;
+        }
+      }
+      @media only screen and (max-width: 400px) {
+        main.row {
+          width: 100%;
+        }
+        main h1 {
+          font: 28px/1.2em Montserrat, sans-serif;
+        }
+        main .site-header .logo a {
+          width: 95px;
+          height: 66px;
+        }
+      }
+      #main-content {
+        padding-top: 55px;
+        backdrop-filter: blur(5px);
+        background: rgba(0, 0, 0, 0.25);
+      }
+      #counter,
+      .email,
+      .footer-social li a:hover {
+        color: #fff;
+      }
+      #counter {
+        width: 90%;
+        text-align: center;
+        margin: 18px auto 0;
+      }
+      #counter span {
+        font: 62px/1em Montserrat, sans-serif;
+        display: block;
+        padding: 12px 0 30px;
+        min-width: 25%;
+        float: left;
+      }
+      #counter span em {
+        font: 11px/18px Montserrat, sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-top: 3px;
+        display: block;
+        color: hsla(0, 0%, 100%, 0.6);
+      }
+      @media only screen and (max-width: 900px) {
+        #counter {
+          width: 92%;
+        }
+        #counter span {
+          font: 58px/1em Montserrat, sans-serif;
+        }
+      }
+      @media only screen and (max-width: 768px) {
+        #counter {
+          width: 100%;
+        }
+        #counter span {
+          font: 52px/1em Montserrat, sans-serif;
+        }
+      }
+      @media only screen and (max-width: 600px) {
+        #counter {
+          margin-bottom: 24px;
+        }
+        #counter span {
+          font: 48px/1em Montserrat, sans-serif;
+        }
+      }
+      @media only screen and (max-width: 500px) {
+        #counter {
+          margin-bottom: 12px;
+        }
+        #counter span {
+          font: 37px/1em Montserrat, sans-serif;
+        }
+        #counter span em {
+          font: 9px/18px Montserrat, sans-serif;
+          letter-spacing: 1.5px;
+        }
+      }
+      @media only screen and (max-width: 400px) {
+        #counter span {
+          font: 31px/1em Montserrat, sans-serif;
+        }
+        #counter span em {
+          font: 8px/18px Montserrat, sans-serif;
+          letter-spacing: 1px;
+        }
+      }
+      #mc-signup {
+        clear: both;
+        width: 75%;
+        margin: 6px auto 30px;
+      }
+      #mc-signup input {
+        float: left;
+        border: 0;
+        font-size: 15px;
+        display: inline-block;
+      }
+      #mc-signup input[type='email'] {
+        height: 54px;
+        line-height: 30px;
+        padding: 12px 15px 12px 20px;
+        border-radius: 3px 0 0 3px;
+        background: hsla(0, 0%, 100%, 0.25);
+        width: 70%;
+      }
+      #mc-signup input[type='submit'] {
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        line-height: 30px;
+        height: 54px;
+        padding: 12px 25px;
+        border-radius: 0 3px 3px 0;
+        background: #fff;
+        width: 30%;
+        text-align: center;
+        color: #000;
+        transition: all 0.3s ease-in-out;
+      }
+      #mc-signup input[type='submit']:hover {
+        background: #eb9400;
+      }
+      #mc-signup label {
+        clear: both;
+        display: block;
+        width: 100%;
+        min-height: 30px;
+        color: #fff;
+      }
+      #mc-signup label i {
+        color: #eb9400;
+        margin-right: 5px;
+      }
+      @media only screen and (max-width: 900px) {
+        #mc-signup {
+          width: 70%;
+        }
+        #mc-signup input[type='email'] {
+          width: 60%;
+        }
+        #mc-signup input[type='submit'] {
+          width: 40%;
+        }
+      }
+      @media only screen and (max-width: 768px) {
+        #mc-signup {
+          width: 80%;
+          margin-bottom: 30px;
+        }
+        #mc-signup input[type='email'] {
+          width: 55%;
+        }
+        #mc-signup input[type='submit'] {
+          width: 45%;
+        }
+      }
+      @media only screen and (max-width: 600px) {
+        #mc-signup {
+          width: 100%;
+          margin-bottom: 24px;
+          padding-left: 15px;
+          padding-right: 15px;
+        }
+        #mc-signup input[type='email'] {
+          width: 100%;
+          float: none;
+          margin-bottom: 0;
+          border-radius: 3px 3px 0 0;
+          text-align: center;
+        }
+        #mc-signup input[type='submit'] {
+          width: 100%;
+          float: none;
+          border-radius: 0 0 3px 3px;
+        }
+      }
+      @media only screen and (max-width: 400px) {
+        #mc-signup {
+          padding-left: 0;
+          padding-right: 0;
+        }
+      }
+      footer {
+        color: #eb9400;
+        clear: both;
+        font: 12px/24px Montserrat, sans-serif;
+        background: #000;
+        padding: 18px 30px;
+        width: 100%;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        z-index: 1;
+      }
+      footer a,
+      footer a:visited {
+        color: #525252;
+      }
+      footer a:focus,
+      footer a:hover {
+        color: #fff;
+      }
+      .footer-copyright {
+        margin: 0;
+        padding: 0;
+        float: left;
+      }
+      .footer-copyright li {
+        display: inline-block;
+        margin: 0;
+        padding: 0;
+        line-height: 24px;
+      }
+      .footer-copyright li:before {
+        content: '|';
+        padding-left: 6px;
+        padding-right: 10px;
+        color: #2c2c2c;
+      }
+      .footer-copyright li:first-child:before {
+        display: none;
+      }
+      .footer-social {
+        font-size: 18px;
+        margin: 0;
+        padding: 0;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+        float: right;
+      }
+      .footer-social li {
+        display: inline-block;
+        margin: 0 10px;
+        padding: 0;
+      }
+      .footer-social li a {
+        color: #eb9400;
+      }
+      @media only screen and (max-width: 768px) {
+        footer {
+          padding-top: 24px;
+          text-align: center;
+        }
+        .footer-copyright {
+          float: none;
+        }
+        .footer-social {
+          float: none;
+          margin-bottom: 15px;
+        }
+      }
+      @media only screen and (max-width: 600px) {
+        footer {
+          position: static;
+          padding-bottom: 30px;
+        }
+        .footer-copyright li {
+          display: block;
+          margin: 0;
+          padding: 0;
+          line-height: 24px;
+        }
+        .footer-copyright li:before {
+          content: none;
+        }
+      }
+      @media only screen and (max-width: 400px) {
+        .footer-social {
+          font-size: 17px;
+        }
+        .footer-social li {
+          margin: 0 6px;
+        }
+      }
+      @keyframes a {
+        0% {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(1turn);
+        }
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
+      integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg=="
+      crossorigin="anonymous"
+    />
     <!-- Modernizr
    =================================================== -->
-    <script src="js/modernizr.js"></script>
-
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"
+      integrity="sha512-3n19xznO0ubPpSwYCRRBgHh63DrV+bdZfHK52b1esvId4GsfwStQNPJFjeQos2h3JwCmZl0/LgLxSKMAI55hgw=="
+      crossorigin="anonymous"
+    ></script>
     <!-- Favicons
    =================================================== -->
     <link rel="shortcut icon" href="favicon.ico" />
   </head>
 
   <body>
-    <!--[if lt IE 9]>
-      <p class="browserupgrade">
-        You are using an <strong>outdated</strong> browser. Please
-        <a href="http://browsehappy.com/">upgrade your browser</a> to improve
-        your experience.
-      </p>
-    <![endif]-->
-
     <!-- content-wrap -->
     <div id="content-wrap">
       <!-- main  -->
@@ -58,7 +579,7 @@
           <h1>Bid, Sell, and Spectate in</h1>
 
           <div id="counter" class="group">
-            <span id="days">134 <em>days</em></span>
+            <span id="days">134 <em>day</em></span>
             <span id="hours">12 <em>hours</em></span>
             <span id="minutes">50 <em>minutes</em></span>
             <span id="seconds">33 <em>seconds</em></span>
@@ -66,7 +587,8 @@
 
           <!-- MailChimp Signup Form -->
           <div id="mc-signup">
-            <form id="mc-form" class="group">
+            <!-- action="javascript:formSubmit" -->
+            <form id="mc-form" class="group" onsubmit="return formSubmit(this)">
               <input
                 type="email"
                 value=""
@@ -84,7 +606,7 @@
                 class="button"
               />
 
-              <!-- <label for="mce-EMAIL" class="subscribe-message"></label> -->
+              <label name="label" class="subscribe-message"></label>
             </form>
           </div>
           <!-- /sign-up form -->
@@ -120,13 +642,9 @@
 
     <!-- Script
 =================================================== -->
-    <script src="js/jquery-1.11.3.min.js"></script>
-    <script src="js/jquery-migrate-1.2.1.min.js"></script>
-    <script src="http://maps.google.com/maps/api/js?v=3.13&amp;sensor=false"></script>
-    <script src="js/jquery.fittext.js"></script>
     <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/jquery.countdown/2.2.0/jquery.countdown.js"
-      integrity="sha512-aWlTsIGUhEq2+LQNA7Wq+OsLaouCcGGaHBWzoU9duKy26ImHe12gRtQnj4688p7QUHG+J4CMb+XwgZ8LYqQ+kQ=="
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"
+      integrity="sha512-ju6u+4bPX50JQmgU97YOGAXmRMrD9as4LE05PdC3qycsGQmjGlfm041azyB1VfCXpkpt1i9gqXCT6XuxhBJtKg=="
       crossorigin="anonymous"
     ></script>
     <script
@@ -134,9 +652,57 @@
       integrity="sha512-lteuRD+aUENrZPTXWFRPTBcDDxIGWe5uu0apPEn+3ZKYDwDaEErIK9rvR0QzUGmUQ55KFE2RqGTVoZsKctGMVw=="
       crossorigin="anonymous"
     ></script>
-    <script src="js/jquery.placeholder.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/jquery.ajaxchimp.min.js"></script>
-    <script src="js/main.js"></script>
+
+    <script>
+      !(function ($) {
+        $(window).load(function () {
+          $('#loader').fadeOut('slow', function () {
+            $('#preloader').delay(300).fadeOut('slow');
+          });
+        });
+        $('div#counter')
+          .countdown('2021/01/15 08:00:00 EST')
+          .on('update.countdown', function (e) {
+            $(this).html(
+              e.strftime(
+                '<span>%D <em>day</em></span><span>%H <em>hours</em></span><span>%M <em>minutes</em></span><span>%S <em>seconds</em></span>'
+              )
+            );
+          });
+      })(jQuery);
+    </script>
+    <script>
+      function formSubmit(form) {
+        event.preventDefault();
+
+        return;
+
+        form.children.label.textContent = 'Submiting...';
+
+        var myHeaders = new Headers();
+
+        var formdata = new FormData();
+        formdata.append('Email', form.EMAIL.value);
+
+        var requestOptions = {
+          method: 'POST',
+          headers: myHeaders,
+          body: formdata,
+          redirect: 'follow',
+        };
+
+        fetch(
+          'https://api-zxasqw.ridesold.com/api1/newsletter/subscribe',
+          requestOptions
+        )
+          .then((response) => response.text())
+          .then((result) => {
+            form.children.label.textContent = 'Submited';
+          })
+          .catch((error) => {
+            form.children.label.textContent = error;
+          });
+      }
+    </script>
   </body>
 </html>

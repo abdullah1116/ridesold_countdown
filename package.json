@@ -1,0 +1,8 @@
+{
+  "name": "ridesold_countdown",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/abdullah1116/ridesold_countdown.git",
+  "author": "a1116 <tmp.abdullah1@gmail.com>",
+  "license": "MIT"
+}
