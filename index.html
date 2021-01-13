@@ -675,18 +675,12 @@
       function formSubmit(form) {
         event.preventDefault();
 
-        // return;
-
         form.children.label.textContent = 'Submiting...';
         form.children.subscribe.disabled = true;
-        fetch(
-          // 'https://api-zxasqw.ridesold.com/api1/newsletter/subscribe',
-          'http://127.0.0.1:5500/res.json',
-          {
-            method: 'GET',
-            // body: { Email: form.EMAIL.value },
-          }
-        )
+        fetch('https://api-zxasqw.ridesold.com/api1/newsletter/subscribe', {
+          method: 'POST',
+          body: { Email: form.EMAIL.value },
+        })
           .then((response) => response.json())
           .then((result) => {
             if (result.ok) {
