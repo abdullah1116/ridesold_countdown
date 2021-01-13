@@ -675,32 +675,30 @@
       function formSubmit(form) {
         event.preventDefault();
 
-        return;
+        // return;
 
         form.children.label.textContent = 'Submiting...';
-
-        var myHeaders = new Headers();
-
-        var formdata = new FormData();
-        formdata.append('Email', form.EMAIL.value);
-
-        var requestOptions = {
-          method: 'POST',
-          headers: myHeaders,
-          body: formdata,
-          redirect: 'follow',
-        };
-
+        form.children.subscribe.disabled = true;
         fetch(
-          'https://api-zxasqw.ridesold.com/api1/newsletter/subscribe',
-          requestOptions
+          // 'https://api-zxasqw.ridesold.com/api1/newsletter/subscribe',
+          'http://127.0.0.1:5500/res.json',
+          {
+            method: 'GET',
+            // body: { Email: form.EMAIL.value },
+          }
         )
-          .then((response) => response.text())
+          .then((response) => response.json())
           .then((result) => {
-            form.children.label.textContent = 'Submited';
+            if (result.ok) {
+              form.children.label.textContent = 'Email submited.';
+              form.children.subscribe.disabled = false;
+            } else {
+              throw 'error';
+            }
           })
           .catch((error) => {
-            form.children.label.textContent = error;
+            form.children.label.textContent = 'Error while submitting';
+            form.children.subscribe.disabled = false;
           });
       }
     </script>
